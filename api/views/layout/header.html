@@ -1,0 +1,46 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{{.title}}</title>
+    <meta name="description" content="{{.description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- for Facebook 待補齊 -->
+    <meta property="og:url" content="{{.url}}" />
+    <meta property="og:title" content="{{.title}}" />
+    <meta property="og:description" content="{{.description}}為你提供優質商品" />
+    <meta property="og:image" content="{{.image}}" />
+    <meta property="og:type" content="website" />
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+{{/*    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" />*/}}
+{{/*    <link rel="stylesheet" href="/static/css/base.css" type="text/css" />*/}}
+{{/*    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />*/}}
+{{/*    <link rel="stylesheet" href="/static/css/jquery-ui.css" type="text/css" />*/}}
+{{/*    <link rel="stylesheet" href="/static/css/jquery-confirm.css" type="text/css" />*/}}
+{{/*    <script type="text/javascript" src="/static/js/jQuery/jQuery-2.2.0.min.js"></script>*/}}
+{{/*    <script type="text/javascript" src="/static/js/jQuery/jquery-ui.min.js"></script>*/}}
+{{/*    <script type="text/javascript" src="/static/js/http.js"></script>*/}}
+{{/*    <script type="text/javascript" src="/static/js/alerts.js"></script>*/}}
+{{/*    <script type="text/javascript" src="/static/js/hideseeheader.js"></script>*/}}
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div id="pageHeader">
+        <div class="side" id="left"><button class="hMenu" onclick="history.go(-1)"></button></div>
+        <div class="title">
+            <H1>{{.header_title}}</H1>
+        </div>
+        <div class="side" id="right"></div>
+    </div>
+
+    <div id="deskHeader">
+        <div class="logo"><a href="#">ShareLug</a></div>
+        <div class="seller"><a href="#"><img src="{{.Picture}}">{{.username}}</a></div>
+    </div>
+{{end}}

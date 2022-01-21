@@ -1,0 +1,52 @@
+{{define "index/product.html" }}
+    {{template "header" .}}
+<section class="main bgW top">
+    <script type="text/javascript" src="/static/js/product.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.touchSlider.js"></script>
+    <script type="text/javascript" src="/static/js/storage.js"></script>
+    <section class="prdPromo" id="touchSlider">
+        <ul class="mainBox" id="product_image"></ul>
+    </section>
+
+    <section class="prdDetails">
+        <h2 id="product_name"></h2>
+        <p class="pPrice"><span class="price tw" id="price"></span></p>
+        <div class="spec">
+            <div class="select"></div>
+            <div class="fAmount">
+                <span class="down"></span>
+                <span class="min" id="countnum">1</span>
+                <span class="up"></span>
+            </div>
+        </div>
+
+        <div class="select">
+            <select id="shipping">
+                <option>請選擇配送方式</option>
+            </select>
+        </div>
+    </section>
+
+    <div class="checkoutBmWrap">
+        <p class="serviceSl"><span></span>ShareLug 提供服務</p>
+        <div class="checkout">
+            <div class="info">
+                <h5>總金額</h5>
+                <p class="pPrice"><span class="price tw" id="total">90,000</span></p>
+            </div>
+            <div class="btn"><button class="genBtn prime" id="pay">加入結帳清單</button></div>
+        </div>
+    </div>
+
+</section>
+    <script>
+    $(function () {
+        $('body').products($(this), {
+            BaseData: {{.data}}
+        });
+
+    });
+    </script>
+
+    {{template "nofooter" .}}
+{{end}}

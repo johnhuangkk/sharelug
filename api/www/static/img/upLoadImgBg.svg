@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="285px" height="135px" viewBox="0 0 285 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>upLoadImg</title>
+    <g id="即時帳單" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="M04-建立帳單-無須配送＋無圖" transform="translate(-45.000000, -412.000000)">
+            <g id="upLoadImg" transform="translate(45.000000, 412.000000)">
+                <rect id="bg" fill="#FAFAFA" x="0" y="0" width="285" height="135" rx="3"></rect>
+                <g id="新增照片" transform="translate(97.000000, 55.000000)" fill="#CDCDCD">
+                    <g id="icon/iconAdd26">
+                        <path d="M14.4444444,11.5555556 L24.5555556,11.5555556 C25.3533002,11.5555556 26,12.2022554 26,13 C26,13.7977446 25.3533002,14.4444444 24.5555556,14.4444444 L14.4444444,14.4444444 L14.4444444,24.5555556 C14.4444444,25.3533002 13.7977446,26 13,26 C12.2022554,26 11.5555556,25.3533002 11.5555556,24.5555556 L11.5555556,14.4444444 L1.44444444,14.4444444 C0.646699806,14.4444444 0,13.7977446 0,13 C0,12.2022554 0.646699806,11.5555556 1.44444444,11.5555556 L11.5555556,11.5555556 L11.5555556,1.44444444 C11.5555556,0.646699806 12.2022554,0 13,0 C13.7977446,0 14.4444444,0.646699806 14.4444444,1.44444444 L14.4444444,11.5555556 Z"></path>
+                    </g>
+                    <text font-family="PingFangTC-Regular, PingFang TC" font-size="13" font-weight="normal" line-spacing="20">
+                        <tspan x="38.5" y="17">新增照片</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,22 @@
+kind: pipeline
+type: docker     
+name: auto_build
+  
+steps:
+  - name: build                          
+    image: golang:1.14.4-alpine3.12
+    commands:
+    - apk add --no-cache bash  
+    - cd api
+    - go mod download
+    - go build
+  - name: push
+    image: plugins/docker                           
+    settings:
+      registry: 10.0.1.15:5000
+      repo: 10.0.1.15:5000/golang
+trigger:   
+  branch: 
+  - master
+  event:
+  - push

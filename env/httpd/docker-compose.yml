@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  web:
+    build:
+      context: .
+    container_name: sharelug_httpd
+    volumes:
+      - /home/devop/htdocs/:/var/www/html/
+    ports:
+      - "8888:8888"
+    tty: true

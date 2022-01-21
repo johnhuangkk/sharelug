@@ -1,0 +1,59 @@
+{{define "index/pay_success.html" }}
+    {{template "noheader" .}}
+    <script type="text/javascript" src="/static/js/payOrder.js"></script>
+
+    <div class="wrapper orderResult">
+        <p class="iconOrder"><span class="succeed"></span></p>
+        <h2>訂購成功</h2>
+        <div class="content">
+            <p>你已完成訂購，付款方式為<em class="PaymentText">ShareLug 餘額</em>，<br>商店會盡快安排<em class="ShippingText"></em>。</p>
+        </div>
+        <div class="orderInfo">
+            <ul>
+                <li><span class="title">訂單編號</span><span class="cont" id="OrderId"></span></li>
+                <li><span class="title">商店名稱</span><span class="cont" id="StoreName"></span></li>
+                <li><span class="title">訂購時間</span><span class="cont" id="OrderTime"></span></li>
+                <li><span class="title">訂購人姓名</span><span class="cont" id="BuyerName"></span></li>
+                <li><span class="title">訂購人手機</span><span class="cont" id="BuyerPhone"></span></li>
+            </ul>
+            <div id="shipping">
+            <h3 class="ShippingText"></h3>
+            <ul>
+                <li><span class="title">收件人姓名</span><span class="cont" id="ReceiverName"></span></li>
+                <li><span class="title">收件人手機</span><span class="cont" id="ReceiverPhone"></span></li>
+                <li><span class="title">收件地址</span><span class="cont" id="ReceiverAdd"></span></li>
+            </ul>
+            </div>
+
+            <div id="Payment" style="display:none"><h3 class="PaymentText"></h3></div>
+            <div id="balanceMode" style="display:none">
+                <ul>
+                    <li><span class="title">此訂單金額</span><span class="cont"><span class="price tw" id="Amount">0</span></span></li>
+                    <li><span class="title">可用餘額</span><span class="cont"><span class="price tw" id="Balance">0</span></span></li>
+                </ul>
+            </div>
+
+            <div id="Transfer" style="display:none">
+                <ul>
+                    <li><span class="title">銀行代碼</span><span class="cont" id="BankName"></span></li>
+                    <li><span class="title">銀行帳號</span><span class="cont" id="BankAccount"><a class="txtBtn prime" href="#">複製</a></span></li>
+                </ul>
+                <div class="addition">
+                    <p>請於 <em class="red" id="ExpireDate"></em> 前完成繳款，若未在此時間點前完成轉帳，此訂單會失效。</p>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="noticeBox">你可以至<a href="javascript:void(0)">訂單管理</a>查詢訂單並追蹤出貨。</div>
+    </div>
+
+    <script>
+        $(function () {
+            $('body').payOrder();
+        });
+    </script>
+
+    {{template "footer" .}}
+{{end}}

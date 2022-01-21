@@ -1,0 +1,97 @@
+{{define "store/ReviewProduct.html" }}
+{{template "header" .}}
+<script type="text/javascript" src="/static/js/review.js"></script>
+<script type="text/javascript" src="/static/js/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="/static/js/storage.js"></script>
+
+    <section class="iframeW">
+        <h2 class="ms">此為此商品上架完成畫面</h2>
+        <div class="wrap">
+            <section class="prdPromo" id="touchSlider">
+                <ul class="mainBox" id="product_image"></ul>
+            </section>
+
+            <section class="prdDetails">
+                <h2 id="product_name"></h2>
+                <p class="pPrice"><span class="price tw" id="price"></span></p>
+                <div class="spec">
+                    <div class="select"></div>
+                    <div class="fAmount">
+                        <span class="down"></span>
+                        <span class="min" id="countnum">1</span>
+                        <span class="up"></span>
+                    </div>
+                </div>
+                <div class="select">
+                    <select id="shipping">
+                        <option>請選擇配送方式</option>
+                    </select>
+                </div>
+            </section>
+            <div class="checkoutBmWrap">
+                <p class="serviceSl"><span></span>ShareLug 提供服務</p>
+                <div class="checkout">
+                    <div class="info">
+                        <h5>總金額</h5>
+                        <p class="pPrice"><span class="price tw" id="total">0</span></p>
+                    </div>
+                    <div class="btn"><button class="genBtn prime">加入結帳清單</button></div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="short" value=""/>
+        <div class="shareWrap">
+            <div class="exp">立刻轉傳或發佈到收銀機：</div>
+            <div class="shareZoneM">
+
+                <p class="qrcode"><img class="showQrcode" src="" /></p>
+                <p class="link"><a href="javascript:void(0)" class="copy">複製連結</a></p>
+                <p class="share"><a href="javascript:void(0)" class="shareAlert">轉傳分享</a></p>
+            </div>
+
+            <div class="shareZoneW">
+                <p class="qrcode"><img class="showQrcode" src="" /><span><a href="" download="qrcode.jpg">下載 QRCode</a></span></p>
+                <p class="copyLink"><span class="link" id="ShortUrl"></span><a href="javascript:void(0)" class="copy">複製連結</a></p>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="btnFuntion w">
+        <a class="prev" href="/store/product/edit/{{.productId}}">編緝商品</a>
+        <a class="next" href="/store/product/new">新增下一筆</a>
+    </div>
+
+</div>
+
+<div id="footer" class="hideM">Copyright © 2020  All rights reserved.</div>
+
+
+<div id="specModal" class="popupBlock modal" style="display: none;">
+    <div class="wrap">
+        <div class="content">
+            <h3>立即分享你的商品<span class="close">&times;</span></h3>
+            <div class="shareTo">
+                <a class="qrcode" class="showQrcode" href="javascript:void(0)"><img src="/static/img/tmpQRcode.png"></a>
+                <a class="line" href="http://line.naver.jp/R/msg/text/?{{.url}}" target="_blank"><img src="/static/img/icon-share-line.svg"></a>
+                <a class="ig" href="https://www.instagram.com" target="_blank"><img src="/static/img/icon-share-ig.svg"></a>
+                <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={{.url}}" target="_blank"><img src="/static/img/icon-share-fb.svg"></a>
+                <a class="copylink copy" href="javascript:void(0)"><img src="/static/img/icon-share-link.svg"></a>
+                <a class="sms" href="sms:?&body={{.header_title}}推薦商品{{.url}}" ><img src="/static/img/icon-share-sms.svg"></a>
+                <a class="tg" href="https://telegram.me/share/url?text={{.url}}" target="_blank"><img src="/static/img/icon-share-tg.svg"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('body').ProductReview($(this), {
+            BaseData: {{.data}}
+        });
+    });
+</script>
+
+{{template "nofooter" }}
+{{end}}

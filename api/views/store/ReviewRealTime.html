@@ -1,0 +1,72 @@
+{{define "store/ReviewRealTime.html" }}
+    {{template "header" .}}
+    <script type="text/javascript" src="/static/js/ReviewRealTime.js"></script>
+    <script type="text/javascript" src="/static/js/storage.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.countdown.min.js"></script>
+
+    <section class="qkBills  bill top">
+        <div class="wrap ">
+            <div class="amt">
+                <span class="title">帳單總金額</span>
+                <span class="price tw" id="Total"></span>
+            </div>
+            <h2 id="productName"></h2>
+            <div class="list">
+                <p><span class="title">商品售價</span><span class="cont price tw" id="ProductPrice"></span></p>
+                <p><span class="title" id="ShipText">宅配寄送</span><span class="cont price tw" id="ShipFee">0</span></p>
+                <p><span class="title">付款方式</span><span class="cont" id="PayWayText">ShareLug 餘額</span></p>
+            </div>
+            <div class="uploadImgS">
+                <label></label>
+            </div>
+        </div>
+        <div class="exp">帳單期限：<em class="red" id="clock1"></em><span class="ps">請䀆速在期限前傳送帳單</span></div>
+        <input type="hidden" id="short" value=""/>
+        <div class="shareZoneM">
+            <p class="qrcode"><img class="showQrcode" src=""></p>
+            <p class="serviceSl"><span></span>ShareLug 即時帳單</p>
+            <p class="btn"><button class="genBtn prime shareAlert"><span id="clock2"></span> 轉傳帳單</button></p>
+        </div>
+        <div class="shareZoneW">
+            <p class="qrcode"><img class="showQrcode" src=""><span><a href="" download="qrcode.jpg">下載 QRCode</a></span></p>
+            <p class="copyLink"><span class="link" id="ShortUrl"></span><a href="javascript:void(0)" class="copy">複製連結</a></p>
+        </div>
+    </section>
+    <div class="btnFuntion w">
+        <a class="prev" href="/">close</a>
+        <a class="next" href="/store/realtime/new">新增下一筆</a>
+    </div>
+    </div>
+    <div class="btnFuntion">
+        <a class="close" href="/">close</a>
+        <a class="next" href="/store/realtime/new">新增下一筆</a>
+    </div>
+
+
+    <div id="specModal" class="popupBlock modal" style="display: none;">
+        <div class="wrap">
+            <div class="content">
+                <h3>立即分享你的商品<span class="close">&times;</span></h3>
+                <div class="shareTo">
+                    <a class="qrcode showQrcode" href="javascript:void(0)"><img src="/static/img/tmpQRcode.png"></a>
+                    <a class="line" href="http://line.naver.jp/R/msg/text/?{{.url}}" target="_blank"><img src="/static/img/icon-share-line.svg"></a>
+                    <a class="ig" href="https://www.instagram.com" target="_blank"><img src="/static/img/icon-share-ig.svg"></a>
+                    <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={{.url}}" target="_blank"><img src="/static/img/icon-share-fb.svg"></a>
+                    <a class="copylink copy" href="javascript:void(0)"><img src="/static/img/icon-share-link.svg"></a>
+                    <a class="sms" href="sms:?&body={{.header_title}}推薦商品{{.url}}" ><img src="/static/img/icon-share-sms.svg"></a>
+                    <a class="tg" href="https://telegram.me/share/url?text={{.url}}" target="_blank"><img src="/static/img/icon-share-tg.svg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('body').RealTimeReview($(this), {
+                BaseData: {{.data}}
+            })
+        });
+    </script>
+
+    {{template "footer" }}
+{{end}}

@@ -1,0 +1,74 @@
+{{define "index/register.html" }}
+
+{{template "header" .}}
+<div class="container">
+
+    <div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Billing address</h4>
+    <form class="form" action="/register" method="post">
+
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+            <div class="invalid-feedback" style="width: 100%;">
+                Your username is required.
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+                Please enter a valid email address.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="address">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+            <div class="invalid-feedback">
+                Please enter your Password.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="address2">confirm Password</label>
+            <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="confirm Password" required>
+            <div class="invalid-feedback">
+                Please enter your confirm password.
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="button">Continue to checkout</button>
+
+        </form>
+    </div>
+
+    <script>
+    $(function () {
+        $(".btn").bind("click", function(){
+
+            $.ajax({
+                "type": "POST",
+                "url": '/register',
+                "dataType": 'json',
+                "data": $(".form").serializeArray(),
+
+            }).done(function(response) {
+                console.log(response);
+                if (response.status === 'Fail') {
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                    location.href='/login';
+                }
+            });
+        });
+
+
+    });
+    </script>
+{{template "footer"}}
+{{end}}

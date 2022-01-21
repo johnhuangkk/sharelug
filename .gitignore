@@ -1,0 +1,14 @@
+*~
+.DS_Store
+*.log
+config.yaml
+api/www/static/images/*
+api/www/static/data
+./env/local/
+api/vendor
+!api/vendor/modules.txt
+.idea
+env/angularNginx/ssl/default.crt
+env/angularNginx/ssl/default.csr
+env/angularNginx/ssl/default.key
+.vscode

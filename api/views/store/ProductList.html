@@ -1,0 +1,48 @@
+{{define "store/ProductList.html" }}
+    {{template "noheader" .}}
+
+    <script type="text/javascript" src="/static/js/QuantityBtn.js"></script>
+    <script type="text/javascript" src="/static/js/productList.js"></script>
+
+    <section class="sellerHomeHeader">
+        <div class="profilePic"><img id="ProfilePic" src=""></div>
+        <div class="storeName"><h3 id="StoreName"></h3></div>
+        <div class="productAmt"><p>商品數：<span id="ProductAmt"></span></p></div>
+        <div class="searchBar">
+            <form>
+                <label for="sBar"></label>
+                <input type="text" id="sBar" name="sBar"  placeholder="搜尋商品"></form>
+        </div>
+    </section>
+
+    <section class="productListWrap" id="productList"></section>
+
+    <div class="stickyCheckout"><button id="pay"><span class="cart" id="CartCount">0</span>立即結帳</button></div>
+
+    <script>
+        $(function () {
+            $('body').productList();
+        });
+    </script>
+
+    <div id="specModal" class="modal">
+        <div class="wrap">
+            <div class="content">
+                <h3>選擇規格<span class="close">&times;</span></h3>
+                <ul class="specList"></ul>
+                <input type="hidden" id="stock" name="stock" value="0" />
+                <div class="function">
+                    <div class="fAmount">
+                        <span class="down"></span>
+                        <span class="min">1</span>
+                        <span class="up"></span>
+                    </div>
+                    <div class="btn"><button class="genBtn prime add">加入結帳清單</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{template "footer" }}
+{{end}}

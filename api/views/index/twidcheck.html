@@ -1,0 +1,350 @@
+{{ define "index/twidcheck.html" }}
+{{template "noheader" .}}
+<script type="text/javascript" src="/static/js/storage.js"></script>
+    <div id="pageHeader">
+        <div class="side"><button class="shPrevious"></button></div>
+        <div class="title">
+            <H1>身分認證</H1>
+        </div>
+        <div class="side"></div>
+    </div>
+
+    <div id="deskHeader">
+        <div class="logo"><a href="#">ShareLug</a></div>
+        <div class="seller"><a href="#"><img src="https://cdn01.pinkoi.com/store/ritzenhoff-tw/logo/2/300x300.jpg">桃樂絲美美皇后</a></div>
+    </div>
+
+    <section class="idModify">
+
+        <div>
+            <h1>身分認證</h1>
+
+            <p>為保障資安、並確保交易款項能匯入您的指定銀行帳戶，
+                請先完成身份認證。</p>
+            <p class="reminder"><a id="showPopup" title="點我看範例"><span class="figure"><img src="/static/img/twID-s.jpg"></span><span>提醒：完成認證後，無法再更改身份證字號，請輸入正確資訊。</span></a></p>
+
+        </div>
+
+        <div class="form">
+
+            <p>
+                <label class="title">姓名</label>
+                <span class="cont"><input name="userName" type="text" placeholder="王大明"></span>
+            </p>
+            <p>
+                <label class="title">身分證字號</label>
+                <span class="cont"><input name="twid" type="text" maxlength="10"  placeholder="A234567890"></span>
+            </p>
+            <p class="date">
+                <label class="title">發證日期</label>
+                <span class="cont">
+                    <select name="applyYear" required="required">
+                        <option value="">年</option>
+                        <option value="109">109</option>
+                        <option value="108">108</option>
+                        <option value="107">107</option>
+                        <option value="106">106</option>
+                        <option value="105">105</option>
+                        <option value="104">104</option>
+                        <option value="103">103</option>
+                        <option value="102">102</option>
+                        <option value="101">101</option>
+                        <option value="100">100</option>
+                        <option value="099">99</option>
+                        <option value="098">98</option>
+                        <option value="097">97</option>
+                        <option value="096">96</option>
+                        <option value="095">95</option>
+                        <option value="094">94</option>
+                    </select>
+                </span>
+                <span class="cont">
+                    <select name="applyMonth" required="required">
+                          <option value="">月</option>
+                          <option value="01">1</option>
+                          <option value="02">2</option>
+                          <option value="03">3</option>
+                          <option value="04">4</option>
+                          <option value="05">5</option>
+                          <option value="06">6</option>
+                          <option value="07">7</option>
+                          <option value="08">8</option>
+                          <option value="09">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                    </select>
+                </span>
+                    <span class="cont"><select name="applyDate" required="required">
+                  <option value="">日</option>
+                  <option value="01">1</option>
+                  <option value="02">2</option>
+                  <option value="03">3</option>
+                  <option value="04">4</option>
+                  <option value="05">5</option>
+                  <option value="06">6</option>
+                  <option value="07">7</option>
+                  <option value="08">8</option>
+                  <option value="09">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option id="date30" value="30">30</option>
+                  <option id="date31" value="31">31</option>
+                </select>
+                </span>
+
+            </p>
+            <p>
+                <label class="title">發證地點</label>
+                <span class="cont">
+                <select name="applyDist">
+                    <option value="">請選擇</option>
+                    <option value="63000">臺北市</option>
+                    <option value="64000">高雄市</option>
+                    <option value="65000">新北市</option>
+                    <option value="66000">臺中市</option>
+                    <option value="67000">臺南市</option>
+                    <option value="68000">桃園市</option>
+                    <option value="10001">臺灣省臺北縣</option>
+                    <option value="10002">臺灣省宜蘭縣</option>
+                    <option value="10003">臺灣省桃園縣</option>
+                    <option value="10004">臺灣省新竹縣</option>
+                    <option value="10005">臺灣省苗栗縣</option>
+                    <option value="10006">臺灣省臺中縣</option>
+                    <option value="10007">臺灣省彰化縣</option>
+                    <option value="10008">臺灣省南投縣</option>
+                    <option value="10009">臺灣省雲林縣</option>
+                    <option value="10010">臺灣省嘉義縣</option>
+                    <option value="10011">臺灣省臺南縣</option>
+                    <option value="10012">臺灣省高雄縣</option>
+                    <option value="10013">臺灣省屏東縣</option>
+                    <option value="10014">臺灣省臺東縣</option>
+                    <option value="10015">臺灣省花蓮縣</option>
+                    <option value="10016">臺灣省澎湖縣</option>
+                    <option value="10017">臺灣省基隆市</option>
+                    <option value="10018">臺灣省新竹市</option>
+                    <option value="10019">臺灣省臺中市</option>
+                    <option value="10020">臺灣省嘉義市</option>
+                    <option value="10021">臺灣省臺南市</option>
+                    <option value="09007">福建省連江縣</option>
+                    <option value="09020">福建省金門縣</option>
+                </select>
+          </span>
+            </p>
+            <p class="type">
+                <label class="title">領補換類別</label>
+                <span class="cont">
+            <input type="radio" id="r1" name="applyType" value="1"><label for="r1">初發</label>
+            <input type="radio" id="r2" name="applyType" value="2"><label for="r2">補發</label>
+            <input type="radio" id="r3" name="applyType" value="3"><label for="r3">換發</label>
+          </span>
+            </p>
+        </div>
+
+        <div>
+            <ol class="notice">
+                <li>請輸入正確資料，若資料查詢之結果錯誤達 3 次，當日將無法再查詢。</li>
+                <li>為保護資料安全，資料傳輸全程採用 SSL/HTTPS，請安心輸入。</li>
+            </ol>
+        </div>
+
+    </section>
+
+
+    <div class="btns editProd">
+        <span><button id="cancel" class="genBtn disable">取消</button></span>
+        <span><button id="submit" class="genBtn prime">送出</button></span>
+    </div>
+
+    <section id = "idPopup" class="popupZone" style="display: none">
+        <div class="wrap">
+            <div class="idImgPopup">
+                <span id= "closeIdPopup" class="close">×</span>
+                <div>
+                    <img src="/static/img/twID-l.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id = "msgBox" class="popupZone" style="display: none">
+        <div class="wrap">
+            <div class="alertIconText">
+                <h4 id="responseTitle"></h4>
+                <div class="cont">
+                    <p id="response"></p>
+                </div>
+                <button id = "msgBoxConfirmBtn" class="genBtn prime">確定</button>
+            </div>
+        </div>
+    </section>
+    </div>
+
+<script>
+    $(function () {
+        $("#showPopup").bind("click", function (){
+            $("#idPopup").show();
+        })
+        $("#closeIdPopup").bind("click", function (){
+            $("#idPopup").hide();
+        })
+        $("#msgBoxConfirmBtn").bind("click", function (){
+            $("#msgBox").hide();
+        })
+
+        $('input[name="userName"]').on("click", function () {
+            $(this).removeClass("error").next(".errorAlert").remove();
+        })
+
+        $('input[name="twid"]').on("click", function () {
+            $(this).removeClass("error").next(".errorAlert").remove();
+        })
+
+        $('.date select').on("click", function () {
+            $(this).removeClass("error").parent().parent().next('.errorP').remove();
+        })
+
+        $("select[name='applyDist']").on("click", function () {
+            $(this).removeClass("error").next(".errorAlert").remove();
+        })
+
+        $('select[name="applyMonth"]').change(function () {
+            let selectMonth = $("select[name='applyMonth']").val()
+            $("select[name='applyDate']").find('option').remove()
+            let firstItem = '<option value="日">日</option>'
+            
+            if (selectMonth === '02') {
+                for (i= 1; i<30; i++){
+                    var indexString
+                    if (i < 10) {
+                        indexString = "0" + i
+                    }
+                    firstItem = firstItem + '<option value="' + indexString +'"> ' + i +'</option>'
+                }
+
+            } else if (selectMonth === '04' || selectMonth === '06' || selectMonth === '09' || selectMonth === '11') {
+                for (i= 1; i<31; i++){
+                    var indexString
+                    if (i < 10) {
+                        indexString = "0" + i
+                    }
+                    firstItem = firstItem + '<option value="' + indexString +'"> ' + i +'</option>'
+                }
+            } else {
+                for (i= 1; i<32; i++){
+                    var indexString
+                    if (i < 10) {
+                        indexString = "0" + i
+                    }
+                    firstItem = firstItem + '<option value="' + indexString +'"> ' + i +'</option>'
+                }
+            }
+            $("select[name='applyDate']").append(firstItem)
+        });
+
+
+        $("#submit").bind("click", function() {
+
+            let error = false;
+            let elem1 = $('input[name="userName"]');
+            if (!$(this).validateSymbolCheck(elem1.val())) {
+                elem1.next(".errorAlert").remove();
+                elem1.addClass("error").after("<div class='errorAlert'>請輸入身份證上姓名。</div>");
+                error = true;
+            }
+            if ( elem1.val() === "") {
+                elem1.next(".errorAlert").remove();
+                elem1.addClass("error").after("<div class='errorAlert'>輸入有誤，請重新輸入。</div>");
+                error = true;
+            }
+            let elem2 = $('input[name="twid"]');
+            if (!$(this).validateTwIdCheck(elem2.val())) {
+                elem2.next(".errorAlert").remove();
+                elem2.addClass("error").after("<div class='errorAlert'>請再次確認身份證字號是否正確。</div>");
+                error = true;
+            }
+
+            if (elem2.val() === "" || elem2.val().length < 10) {
+                elem2.next(".errorAlert").remove();
+                elem2.addClass("error").after("<div class='errorAlert'>輸入有誤，請重新輸入。</div>");
+                error = true;
+            }
+
+            $.each($(".date select"), function (index, element) {
+                if ($(element).val() === "") {
+                    $(element).parent().parent().next('.errorP').remove();
+                    $(element).addClass("error")
+                    .parent().parent().after("<p class='errorP'><label class='title'></label><span class='cont'><span class='otpAlmsg error'>請選擇發證年月日</span></span></p>");
+                    error = true;
+                }
+            })
+
+            let elem3 = $("select[name='applyDist']");
+            if (elem3.val() === "") {
+                elem3.next(".errorAlert").remove();
+                elem3.addClass("error").after("<div class='errorAlert'>請選擇發證地點。</div>");
+                error = true;
+            }
+
+            if (error === true) {
+                return;
+            }
+
+
+            $('#response').text("");
+            $('#responseTitle').text("");
+
+            let data = {
+                Name: $("input[name='userName']").val(),
+                TWID: $("input[name='twid']").val(),
+                ApplyType: $("input[name='applyType']:checked").val(),
+                ApplyYear: $("select[name='applyYear']").val(),
+                ApplyMonth: $("select[name='applyMonth']").val(),
+                ApplyDate: $("select[name='applyDate']").val(),
+                ApplyDist: $("select[name='applyDist']").val(),
+            }
+
+            $.http.prerequest(function () {
+            }).post('/post/twidcheck', JSON.stringify(data)).done(function (result) {
+                if (result.Status === 'Fail') {
+                    $('#responseTitle').text("身份認證失敗。");
+                    $('#response').text(result.Message);
+                } else {
+                    if(result.Data.QueryResult === 'false') {
+                        $('#responseTitle').text("身份認證失敗。");
+                        $('#response').text(result.Data.Message);
+                    } else {
+                        $('#responseTitle').text("身份認證成功。");
+                        $('#response').text("");
+                    }
+                }
+                $("#msgBox").show();
+            }).fail(function (result) {
+                 window.location.href="/404";
+            });
+
+        });
+
+    });
+
+</script>
+
+{{template "footer" .}}
+{{end}}

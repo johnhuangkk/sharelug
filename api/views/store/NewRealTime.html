@@ -1,0 +1,67 @@
+{{define "store/NewRealTime.html" }}
+    {{template "header" .}}
+    <script type="text/javascript" src="/static/js/realTime.js"></script>
+    <script type="text/javascript" src="/static/js/storage.js"></script>
+
+    <form>
+    <section class="qkBills">
+        <p class="qkCreateBillLink"><a id="ProductList" href="javascript:void(0)">複製即時帳單</a></p>
+        <div class="wrap">
+            <div class="amt">
+                <span class="title">帳單總金額</span>
+                <span class="zero price tw" id="total">0</span>
+            </div>
+            <div class="list">
+                <p class="items"><input type="text" name="name" class="alignL validate" value="" maxlength="40" placeholder="請輸入商品名稱（限 40 字）"></p>
+                <p class="items"><span>金額</span><input type="tel" name="price" class="validate" value="" placeholder="NT$" maxlength="6" oninput="value=value.replace(/[^\d]/g,'')"></p>
+                <div class="clums">
+                    <div>
+                        <select name="shipping" class="validate">
+                            <option value="" selected="selected">請選擇配送</option>
+                            <option value="CvsFamily">全家超商</option>
+                            <option value="CvsHiLife">萊爾富超商</option>
+                            <option value="CvsOkMart">OK超商</option>
+                            <option value="Cvs7Eleven">7-11超商</option>
+                            <option value="Delivery">宅配寄送</option>
+                            <option value="iPOST">i 郵箱</option>
+                            <option value="F2F">面交/自取</option>
+                            <option value="none">無須配送</option>
+                        </select>
+                    </div>
+                    <div id="shipfee">
+                        <input type="tel" name="shipfee" class="validate" placeholder="NT$" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" />
+                    </div>
+                </div>
+                <p>
+                    <select name="payWay" class="validate">
+                        <option value="" selected="selected">請選擇付款方式</option>
+                        <option value="Credit">信用卡</option>
+                        <option value="Transfer">ATM</option>
+                        <option value="CVSPay">貨到付款</option>
+                        <option value="Balance">Check'Ne 餘額</option>
+                    </select>
+                </p>
+            </div>
+            <div class="uploadImgS">
+                <label for="file-upload" style="background-image:url('/static/img/upLoadImgBg.svg')" >
+                    <input id="file-upload" type="file" accept="image/*"/>
+                    <input type='hidden' name='image' value="" />
+                </label>
+            </div>
+        </div>
+    </section>
+    <div class="fixedBtBtn">
+        <div class="checkout">
+            <button type="button" class="genBtn disable" id="submit" disabled>建立帳單</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<script>
+$(function(){
+    $("body").realtime();
+});
+</script>
+    {{template "footer" .}}
+{{end}}

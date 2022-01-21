@@ -1,0 +1,289 @@
+ENV: "dev"
+WEBHOST: "dev.sharelug.com"
+
+FILE:
+  UPLOAD_FOLDER: "./data/"
+  UPLOAD_IMAGES_FOLDER: "./www/static/images/"
+
+PLATFORM:
+  COMPANY_BAN: "83513049"
+  COMPANY_NAME: "托拉幫股份有限公司"
+  COMPANY_ADDRESS: "臺北市信義區安康里松德路159號14樓"
+  USERID: "U2021010100001"
+
+logFilePath: "./log/"
+logFileName: "golang"
+
+TinyURL: "http://go81.me"
+EncryptKey: "123456781234567812345678"
+
+cookie:
+  name: "PHPSESSID"
+
+#資料庫
+database:
+  mysql:
+    charset: "utf8mb4"
+    port: "3306"
+    master:
+      hostname: "172.27.0.4"
+      username: "devop"
+      password: "83513049"
+      dbName: "sharelug"
+    slave:
+      hostname: "172.27.0.4"
+      username: "devop"
+      password: "83513049"
+      dbName: "sharelug"
+
+#redis
+redis:
+  hostname: "172.27.0.3:6379"
+  password: ""
+#  hostname: "10.0.1.15:6379"
+
+#簡訊設定值
+sms:
+  hostname: "http://61.20.32.60/mpushapi/shortsmssubmit"
+  sysid: "SHARELUG"
+  source: "01916800061094300223"
+
+#三竹簡訊
+mitake:
+  hostname: "https://smsapi.mitake.com.tw/api/mtk/SmSend?CharsetURL=UTF-8"
+  username: "83513049"
+  password: "sharelug"
+
+product:
+  path: "/produst/"
+
+qrcode:
+  path: "qrcode/"
+
+images:
+  productPath: "product/"
+  storePath: "store/"
+  userPath: "user/"
+
+#凱基銀行－轉帳
+KgiBank:
+  BankName: "凱基銀行"
+  BankCode: "809"
+  Path: "http://kgiexpresst.kgibank.com/KgiWs2/services/DataWs"
+  C2C:
+    SenderID: "83513049-80001"
+    AtmCode: "80001"
+    Account: "60070100001513"
+    Password: "86C28UVY4V"
+  B2C:
+    SenderID: "83513049-80002"
+    AtmCode: "80002"
+    Account: "60090100005201"
+    Password: "UJG8X8UQND"
+
+ScsBank:
+  AtmCode: "80001"
+  BankName: "上海銀行"
+  BankCode: "011"
+  VAPrefixCode: "0722" #虛擬帳號前綴碼
+  VAFetchHost: "https://ibank.scsb.com.tw/" #查詢虛擬帳號入金的API位置
+
+#信用卡
+KgiCredit:
+  hostname: "kgi-test.nccc.com.tw"
+  AuthPath: "/mbec/APIRequest"
+  B2C:
+    3D:
+      MerchantID: "1300816653"
+      TerminalID: "A2109351"
+    N3D:
+      MerchantID: "1300816653"
+      TerminalID: "A2109351"
+  C2C:
+    3D:
+      MerchantID: "1300816653"
+      TerminalID: "A2109351"
+    N3D:
+      MerchantID: "1300816653"
+      TerminalID: "A2109351"
+
+KgiAch:
+  BankCode: "8090072"
+  BankAccount: "60070100001513"
+  SenderID: "98754946"
+  Path: "/kgi/ach/export/"
+
+FISC:
+  path: "https://www.focas-test.fisc.com.tw/FOCAS_WS/API20/QRP/"
+
+#i郵箱
+IPOST:
+  company: "sharelug"
+  iPostInfoPath: "https://ipickup.post.gov.tw/Api/ITRI/Query_POSTBOX_Address"
+  SHA384Key: "iBoxEC.UP_MAILINFO"
+  csvPath: "/ipost"
+  # 測試
+  iPostEcMailInfoPath: "http://210.200.25.118:8080/iBoxUp_Ecmailinfo/api/UP_ECMAILINFO"
+  #  正式
+  #  iPostEcMailInfoPath: "http://express.post.gov.tw:8080/iBoxUp_Ecmailinfo/api/UP_ECMAILINFO"
+  iPost2iPost: "100051000126"
+  iPost2Home: "100051000127"
+#PostBag
+POSTBAG:
+  officialNumber: "100051000128" #特約戶編號
+  packageNumber: "101296" #包裹特用代號
+  host: "211.75.167.50:21"
+  id: "sharelug2117516750"
+  pwd: "ShareLug@2117516750"
+  sharelugHost: "61.220.55.10:21"
+  sharelugid: "postbag"
+  sharelugpw: "x$%=kWXV"
+# 7-11
+MYSHIP:
+  eshopid: "851" #取貨不付款廠商編號
+  eshopidbyPay: "850" #取貨付款廠商編號
+  eshopsonid: "955" #廠商子ID
+  sftpHost: "ecftptest.sp88.tw:990" #sftp
+  sftpAccount: "850955"
+  sftpPassword: "tEyz59ly8LeKrzcW8O"
+  postPackageUrl: "https://eservicetest.sp88.tw/c2c/PaymentBack.ashx"
+  printOrderUrl: "http://61.57.231.104/C2C/C2CWeb/MultiplePrintC2CPinCode.aspx"
+  printPayOrderPwd: "850presco"
+  printNonPayOrderPwd: "851presco"
+  sevenCodeDomain: "http://61.57.231.104/C2C/C2CWeb/"
+
+#內政部 換領補
+MOI:
+  SERVER_URL: "https://117.56.7.66:1443/integration/rwv2c2/"
+  TAX_ID: "83513049"
+  AP_ID: "SHL00"
+  ISS_KEY: "20YseOiFG2oE7VrI9IHqXzknrhMRH7lA"
+  JOB_ID: "V2C201"
+  PRIVATE_KEY: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpgIBAAKCAQEAx1wmyNvYA2WEJe/FqrovK3UJrKbM3onaPDlS97cYEQafJM71
+    5O4oumAZXqaUg5JUmQ8/ZmKJFlrzRopZpPn84F4XCIUeGgRZaY1dSVFqz4IdRQzU
+    mUqhC6qd2nAtu5SpCLJmq1WXyxMzdKfRCGUayRe7w47woJiRry2cuoNyz37YGuxy
+    3acgy1Mjg+kUNlDD3L6/s/ILf5JMaAyH+TmdflZhsuBKEgVSDAZPKnPXj02MhFCD
+    Uj+Nf1F/sX+udhhFkhFtVEgNKG8y7X+i2wgbAgidVm3Fb7wQLosvnG8pRDcSH4Jx
+    884WvnfLfMyeXhw0IJFcfJRXFK4A5tFEe0+AEQIDAQABAoIBAQCL+y+cf4lIsUI9
+    5QMVYs/2IqLdYO2fIIplGRchqqUyZ0TdcpiD25ora4jExhCn5dqS8nrg6DU7xjbl
+    hAV36rRd0pM3v0iomf8yNzmWXp2yALmOn3iz/gvghjd6hqQF/1dFLQccLOh9hgju
+    U1taGqvZIVoM8VQSX66Do3JWIDBAcqGTotT8Lpc1PLEYunus+wD5oTOU2YCtx8vq
+    BP0Mk7iSwMqJveQJzfKJ2DFctxz50CkBAs1vt9sh3Xd/exm66WKvbXIH1H5+LDpg
+    FKAaZBePTMuQ4R23J1X/XhlBvhiNTwNw8uy1AA72G5/QFhiQhJrYyrISFnyGB935
+    tqxXBhzxAoGBAO5V+gi0q0tOpY65LZKcK+gdMLmORy65v9mC8eYSUaChAK+5kjN2
+    1XcbdlsoHBx3Byasw14DSWIH76n1w1gycPB1T2G83js8cmfm2UTlCqBVzTN2x2Xr
+    xAb698BFSKWFTAH+40AZVQ9VlFhx3Eul2xzRJnuLue42FJdrzpCLyxaVAoGBANYi
+    rDzNtheLgo83HcWNtkveyQ8hoMuypKj9/RSd5YRRwjEiNWUIIs7GM0lTiM4h4ysx
+    tu8IBiuXHHGNXnUbOydKJDuHFo9YANy8w/kg5dHAMkB1LDmbS4E5BvvfUWer+887
+    vX/LMSt4Hf2wf7t0N0JIj4eQdQjJCMZ+S3aR79CNAoGBALKtKiHUsIZok52IHi5H
+    fnMpTxoNHDhfcQC0Nn1xRljR2x3iVUTX1fjRUc3NKCX+5hGMe3rDpAQmRvp4ENbS
+    GfFrQPPZEBIAoxRZ8JDB1VGWgZwPdDVopzFEfPBcALZ2VCE64UtwsmAonGoiEjF0
+    Sew0sFD205FOYemTHO0ooDxxAoGBAICA5D3E8W6lwR7y44HnbiuPsbbL5nP3a8si
+    SNszekXyzoev0L0lqcXOuX5ai/Gv8mS8e9xsQ0+ral1WigXa5p/IZX/3rHkvRa0x
+    9qUtsd0y6rU12+liIWiV8XP7ax283utZHXpwVLySY+UXI0A6GONFKiUfcqxoAEUm
+    C2FHaNQNAoGBAMu/2N+o9uHa0QB9m7NzhdoLuVZUhkUzYBB0xObqYckpTvT/lUe+
+    7LuPX05YLmyy/4OtvGLx2D6J10MAA+srYqOAflWFwzlT9WjdD/jpnmwJ7nKwfShD
+    LNm9GBMW0wRXT5a9FeV7tzNhkuWSX3q28Y0AAmeDx26OMHgdu9dUi2E2
+    -----END RSA PRIVATE KEY-----
+
+INVOICE:
+  Host: "10.0.1.22:21"
+  Account: "invoice"
+  Password: "N46@fewR"
+  AESKey: "E1D1424DDD999EB519B8EAFD9E3C005A"
+  API:
+    apiKey: "GyG5s7ZwaxdGt3oAvPq/IA=="
+    apiFrom: "https://wwwtest.einvoice.nat.gov.tw/APCONSUMER/BTC101I/"
+    apiTo: "https://wwwtest.einvoice.nat.gov.tw/APCONSUMER/BTC103I/"
+    apiCardBan: "83513049"
+    apiCardType: "EJ1515"
+    hostTo: "https://dev.sharelug.com/setting/invoiceback"
+  VC:
+    APPID: "EINV3202006288777"
+    APIKEY: "dWwyS2lxdzR2bllmejRJNg=="
+    URL: "https://www.einvoice.nat.gov.tw/BIZAPIVAN/biz"
+
+Ftp:
+  #  path: "ftp.speed.hinet.net:21"
+  #  username: "ftp"
+  #  password: "ftp"
+  path: "10.0.1.22:21"
+  username: "ipost159"
+  password: "cW85@Ye3"
+  #  username: "devop"
+  #  password: "83513049"
+
+AWS:
+  KMS_KEY: "arn:aws:kms:us-west-2:549716678018:key/2e62f096-6040-4e9e-9933-45d50c40f54b"
+
+Data:
+  goPath: "./data/zipcode/"
+  cvsPath: "./data/cvs/"
+  wwwPath: "./www/static/data/"
+
+# 超商
+MartHiLife:
+  ApiHost1: "https://ecservicedev.hilife.com.tw"
+  ApiHost2: "https://ecservice.hilife.com.tw"
+  EshopId: "901"
+  EcCvs: "HILIFEC2C"
+  EcDcNo: "D11"
+  FtpHost: "203.73.97.204:22"
+  FtpPassword: "26gD3*8R!hj5"
+  FtpUnzipPasswd: "ffb5fd214ebc454a8b0bb7ae3a8af461"
+  FtpUsername: "ShareLug-beta"
+  HashIV: "b41752b9acbd"
+  HashKey: "5593df4f4d10"
+  ParentId: "124"
+  Sercode: "865"
+
+MartFamily901:
+  ApiKey: "RO2ic3TUJ6AC4VFIwW1bMZa4ovfhbllmCDHw730IemxBwIZ9fF4v4TwtZsB1zZaeqVIE9Cp0xbP5QEagV2VAdqXu7P0LedEF7y4MPWZeSqQpveaqM7KY13qJ65Dw7Xcp"
+  ApiHost: "http://211.21.163.234:8000"
+  EshopId: "0001"
+  FtpHost: "ftp.fme.com.tw:21"
+  FtpPassword: "7Yr2Ohx3"
+  FtpUnzipPasswd: "A831e7qfpRXrjbfkjtfXyNEwkVpTOyOA"
+  FtpUsername: "share28P"
+  OPMode: "1"
+  ParentId: "901"
+  PriKey: "rkhcF6XjJyyU1BcuVzmwbAxUwPcYmwAm15qdpSAfvtvQtS5hM2ix53Eycz9D2ShsyWDdVMehQYPWtd4CPoxVTgypp12fR6LIjoUDRY6G02MXBfAFFhxUhU5rUjlqjdSp"
+
+MartFamily911:
+  ApiKey: "iOkO3I6SnUVahBOFrTX2804JxqrIEc3KTnzOxopSKKcL1Q7fLa5mjiTPhZwJNYD19MzLJF3Ay83Qc21ob0lwjKjMg1KtQ5VQwwxMUy2ikQLAbZ064QqYDsAubh1YAj1a"
+  ApiHost: "http://211.21.163.234:8000"
+  EshopId: "0001"
+  FtpHost: "ftp.fme.com.tw"
+  FtpPassword: "E6q3Um86"
+  FtpUnzipPasswd: "RujwsNC7tziuu4F8wF6jvz4T4mK3VBG8"
+  FtpUsername: "share32F"
+  OPMode: "1"
+  ParentId: "911"
+  PriKey: "l3acIsU02Dz6CYnZEdvEVzriRJnP6QMG1Ku6STNDmiE8mhcGdnLJBDNbWuXhkspPRVcBUWjgoUOGeLsqclEFfrA1s1ZNM7xZGnD6gABGGSXjWvcJvGkfTMv1yKtjIIMU"
+
+MartOK:
+  ApiHost: "60.199.192.42"
+  EcNo1: "461"
+  EcNo2: "462"
+  EcNo3: "463"
+  EcNo4: "464"
+  EcNo5: "465"
+  F60StserCode: "951"
+  F60SerCode: "952"
+  F10SerCode: "953"
+  FtpHost: "60.199.192.42"
+  FtpUsername: "VSHALUG_UAT"
+  FtpPassword: "jk9TAaV5"
+  KeyCode: "5aKP4mayvbnMiW/ENGHcQcXqBexzXgEGPsS6cl7PxCI="
+
+MAIL_SERVER:
+  FROM: "email@checkne.com"
+  SMTP_HOST: "http://52.12.241.56:5050/mailto"
+
+KgiReport:
+  username: "kgicheckne"
+  password: "g@ac8-2f"
+  host: "61.220.55.10:21"
+  localhost: "10.0.1.22:21"

@@ -1,0 +1,56 @@
+version: "3.3"
+services:
+    swagger-editor:
+        image: swaggerapi/swagger-editor
+        container_name: "swagger-editor"
+        restart: always
+        ports:
+            - "8088:8080"
+
+    gitlab:
+        image: gitlab/gitlab-ce:latest
+        container_name: "gitlab"
+        hostname: 192.168.10.100
+        restart: always
+        ports:
+            - '8081:80'
+            - '4433:443'
+            - '2222:22'
+        volumes:
+            - './gitlab/data:/var/opt/gitlab'
+            - './gitlab/logs:/var/log/gitlab'
+            - './gitlab/config:/etc/gitlab'
+
+    runner:
+        image: gitlab/gitlab-runner:latest
+        container_name: "gitlab-runner"
+        restart: always
+        volumes:
+            - './gitlab/gitlab-runner:/etc/gitlab-runner'      
+            - '/var/run/docker.sock:/var/run/docker.sock'
+
+    golang:
+        build:
+            context: ./golang
+        container_name: "golang"
+        restart: always
+        environment:
+            - TZ=Asia/Taipei
+            - DEBUG=true
+        ports:
+            - '8001:8001'
+            - '8022:22'
+        tty: true    
+
+
+#    jenkins:
+#        image: jenkins/jenkins:lts
+#        container_name: "jenkins"
+#        hostname: 192.168.10.100   # 我自己設定的hostname 要能用記得去修改 /etc/hosts
+#        tty: true
+#        ports:
+#            - '8082:8080'     # 把local 的8080對應到 image 裡面的 8080 port
+#            - '5000:5000'     # 把local 的50000對應到 image 裡面的 5000 port
+#        restart: always     # 一樣不要每次開機就自動運行 Jenkins
+#        volumes:
+#            - './gitlab/jenkins:/var/jenkins_home'  #我 Local 要給 Jenkins 存資料的位置 

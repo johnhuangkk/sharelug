@@ -1,0 +1,183 @@
+{{define "index/pay.html" }}
+    {{template "header" .}}
+
+    <script type="text/javascript" src="/static/js/pay.js"></script>
+    <script type="text/javascript" src="/static/js/storage.js"></script>
+    <script type="text/javascript" src="/static/js/IPOST.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
+
+    <section class="checkoutProcess first" id="shipInfo">
+    <h5>配送方式</h5>
+    <div class="tabsCapsule noBg">
+        <ul id="shipping" class="ship"></ul>
+    </div>
+
+    <div class="receipt">
+        <h4>你的結帳清單<span class="switch off" id="switch"></span></h4>
+        <div id="cardInfo"></div>
+        <div class="itemShipping totalInfo">
+            <div>
+                <p class="title">小計</p>
+                <p class="pPrice"><span id="subtotal" class="price tw"></span></p>
+            </div>
+            <div>
+                <p class="title">運費</p>
+                <p class="pPrice"><span id="shipfee" class="price tw"></span></p>
+            </div>
+            <div class="total">
+                <p class="title">總金額</p>
+                <p class="pPrice"><span id="total" class="price tw"></span></p>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <form id="form">
+    <section class="checkoutProcess">
+        <h5 id="ship_text">宅配收件資料</h5>
+
+        <div class="tabsCapsule" id="csvstore" style="display: none">
+            <ul id="store" class="ship"></ul>
+        </div>
+
+        <div class="wrap">
+
+            <input type="tel" class="validate" maxlength="10" name="BuyerPhone" placeholder="訂購人手機號碼" />
+
+
+            <div>
+                <input type="text" class="validate" name="BuyerName" placeholder="收件人姓名（請輸入真實姓名）">
+                <p class="ps"><input type="checkbox" id="orderer">收件人與訂購人相同</p>
+                <div id="extra">
+                    <input type="text" class="validate" name="ReceiverName" placeholder="收件人姓名" disabled>
+                    <input type="text" class="validate" name="ReceiverPhone" placeholder="收件人手機號碼" disabled>
+                </div>
+
+                <div class="ship-address" data-ship="Delivery" style="display: none">
+                    <h6>收件地址</h6>
+                    <div class="clums twzipcode"></div>
+                    <input type="text" class="validate" slg-validate="required" name="ReceiverAddress" placeholder="填寫地址">
+                </div>
+
+                <div class="ship-address" data-ship="Store" style="display: none">
+                <h6>取貨門市位置</h6>
+                    <div class="clums twzipcode"></div>
+                    <div class="select">
+                        <select class="validate" name="ConsigneeRoute" slg-validate="required">
+                            <option value="">請選擇街道</option>
+                            <option value="中坡北路">中坡北路</option>
+                            <option value="信義路五段">信義路五段</option>
+                            <option value="信義路六段">信義路六段</option>
+                            <option value="光復南路">光復南路</option>
+                            <option value="吳興街">吳興街</option>
+                            <option value="和平東路三段">和平東路三段</option>
+                            <option value="嘉興街">嘉興街</option>
+                            <option value="基隆路一段">基隆路一段</option>
+                            <option value="基隆路二段">基隆路二段</option>
+                            <option value="崇德街">崇德街</option>
+                            <option value="忠孝東路四段">忠孝東路四段</option>
+                            <option value="忠孝東路五段">忠孝東路五段</option>
+                            <option value="東興路">東興路</option>
+                            <option value="松仁路">松仁路</option>
+                            <option value="松信路">松信路</option>
+                            <option value="松勤街">松勤街</option>
+                            <option value="松山路">松山路</option>
+                            <option value="松德路">松德路</option>
+                            <option value="松智路">松智路</option>
+                            <option value="松隆路">松隆路</option>
+                            <option value="松高路">松高路</option>
+                            <option value="林口街">林口街</option>
+                            <option value="永吉路">永吉路</option>
+                            <option value="福德街">福德街</option>
+                            <option value="莊敬路">莊敬路</option>
+                            <option value="虎林街">虎林街</option>
+                            <option value="逸仙路">逸仙路</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select class="validate" name="ReceiverAddress" slg-validate="required">
+                            <option value="">請選擇超商門市</option>
+                            <option value="嘉馥">嘉馥 (台北市信義區信義路六段21號23號1樓)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ship-address" data-ship="iPOST" style="display: none">
+                    <h6>收件地址</h6>
+                    <div class="clums IPOST"></div>
+                    <div class="select"></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="checkoutProcess ">
+            <h5>付款方式</h5>
+            <div class="tabsSlide">
+                <ul id="paywaylist"></ul>
+            </div>
+            <div class="wrap payway" data-payway="Credit" style="display: none">
+                <input type="text" class="validate" name="CreditNumber" maxlength="19" value="" placeholder="信用卡卡號（Master / Visa / JCB）">
+                <div class="clums">
+                    <div><input type="text" class="validate" maxlength="5" name="CreditExpiration" value="" placeholder="MM / YY"></div>
+                    <div><input type="text" class="validate" maxlength="3" name="CreditSecurity" value="" placeholder="安全碼"></div>
+                </div>
+            </div>
+
+            <div class="wrap payway" data-payway="Transfer" style="display: none">
+                <div class="noticeBox">結帳後會提供一組專屬 ATM 帳號，並在有效時間內完成轉帳繳費。</div>
+            </div>
+
+            <div class="wrap payway" data-payway="CVSPay" style="display: none">
+                <div class="noticeBox">賣家將商品寄至指定超商，領取商品時支付貨款。</div>
+            </div>
+
+            <div class="wrap payway" data-payway="Balance" style="display: none">
+                <p class="balMoney">可用餘額<span class="price tw">0</span></p>
+                <div class="noticeBox">結選擇餘額付款方式，在立即支付後由 Check'Ne 餘額中扣除該筆訂單總金額。</div>
+            </div>
+        </section>
+
+        <div class="checkout">
+            <button type="button" class="genBtn disable" id="submit" disabled>立即支付<span class="price tw">900,000</span></button>
+            <p class="ps">結帳即表示同意 <a href="#">約定條款</a> 及 <a href="#">隱私權聲明</a></p>
+        </div>
+
+        </div>
+    </section>
+    </form>
+
+</div>
+
+
+
+
+    <div id="specModal" class="modal popup" style="display:none;">
+        <div class="wrap">
+            <div class="content">
+                <span class="close">&times;</span>
+                <h4>輸入驗證碼</h4>
+                <div class="cont colorTextLight">傳送至 <span id="phone"></span></div>
+                <form>
+                    <label for="sBar"></label>
+                    <input type="tel" id="code" name="code" maxlength="6" name="" placeholder="輸入驗證碼">
+                </form>
+                <p id="second" class="otpAlmsg m1"></p>
+            </div>
+        </div>
+    </div>
+
+   <script>
+   $(function () {
+       $('#tabs a').click(function (e) {
+           e.preventDefault()
+           $(this).tab('show')
+       });
+
+       $("body").pay();
+       $("div.IPOST").IPOST();
+   });
+
+   </script>
+    {{template "nofooter" .}}
+{{end}}

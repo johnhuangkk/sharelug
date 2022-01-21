@@ -1,0 +1,19 @@
+kind: pipeline
+type: docker     
+name: auto_build
+  
+steps:
+  - name: build                          
+    image: golang:1.14.4-alpine3.12
+    commands:
+    - apk add --no-cache bash  
+    - go mod download
+    - mkdir /go/src/sharelug
+    - go test
+    - go build  
+
+trigger:   
+  branch: 
+  - master
+  event:
+  - push

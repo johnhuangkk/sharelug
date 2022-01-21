@@ -1,0 +1,14 @@
+{{define "index/pay_fail.html" }}
+    {{template "noheader" .}}
+    <div class="wrapper orderResult">
+        <p class="iconOrder"><span class="fail"></span></p>
+        <h2>訂購失敗</h2>
+        <div class="content">
+            <p>授權失敗無法完成交易，請與發卡銀行聯繫。</p>
+        </div>
+        <p class="reOrderMsg"><a href="#">重新選擇付款方式</a></p>
+    </div>
+
+    {{template "footer" .}}
+
+{{end}}

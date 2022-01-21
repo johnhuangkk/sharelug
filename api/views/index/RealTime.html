@@ -1,0 +1,47 @@
+{{define "index/RealTime.html" }}
+    {{template "header" .}}
+    <script type="text/javascript" src="/static/js/showRealTime.js"></script>
+    <script type="text/javascript" src="/static/js/storage.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.countdown.min.js"></script>
+
+    <section class="billOffical">
+        <div class="wrap">
+            <div class="seller">
+                <a href="#"><img src="">
+                    <span></span>
+                </a>
+            </div>
+            <div class="amt">
+                <span class="title">帳單總金額</span>
+                <span class="price tw" id="Total"></span>
+            </div>
+            <h2 id="productName"></h2>
+            <div class="list">
+                <p><span class="title">商品售價</span><span class="cont price tw" id="ProductPrice"></span></p>
+                <p><span class="title" id="ShipText"></span><span class="cont price tw" id="ShipFee">0</span></p>
+                <p><span class="title">付款方式</span><span class="cont"><em id="PayWayText"></em></span></p>
+                <div class="uploadImgS done">
+                    <label style="background-image: url(https://bre.is/VKahza5e)"></label>
+                </div>
+                <button class="genBtn prime" id="pay"><span id="clock2"></span> 立即結帳</button>
+
+            </div>
+        </div>
+    </section>
+    <p class="billFooter inside"><span></span>ShareLug 即時帳單</p>
+    </div>
+
+    <p class="billFooter"><span></span>ShareLug 即時帳單</p>
+
+<script>
+    $(function () {
+        $('body').RealTimeShow($(this), {
+            BaseData: {{.data}}
+        })
+
+    });
+</script>
+
+
+    {{template "footer" }}
+{{end}}

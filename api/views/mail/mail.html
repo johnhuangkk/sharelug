@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+        <meta charset="utf-8">
+        <!-- utf-8 works for most cases -->
+        <meta name="viewport" content="width=device-width">
+        <!-- Forcing initial-scale shouldn't be necessary -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Use the latest (edge) version of IE rendering engine -->
+        <meta name="x-apple-disable-message-reformatting">
+        <!-- Disable auto-scale in iOS 10 Mail entirely -->
+        <title></title>
+        <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    </head>
+
+    <body width="100%" style="margin: 0 !important; padding: 0 !important; mso-line-height-rule: exactly; background-color: #fafafa; font-family: 'PingFang TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif, Arial;">
+            
+        <div style="margin: 0 auto;">
+            <!-- BEGIN BODY -->
+            <table  align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#fafafa" style="margin: auto;">
+                <tr>
+                    <td></td>
+                    <td width="560">
+                        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                            <tr>
+                                <td valign="top" style="background: #ffffff;">
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td class="logo" style="text-align: center; width: 100%; border-bottom: 1px solid rgba(0, 0, 0, .1);">
+                                                <h1 style="border-top: .15em solid transparent; border-bottom: .15em solid transparent;">
+                                                    <!-- 請更換換正確圖片網址 -->
+                                                    <img src="https://www.checkne.com/static/img/logo-checkne-mail.png" title="Check'Ne" style="display: block; margin: auto; width: 25%; -ms-interpolation-mode: bicubic; ">
+                                                </h1>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- end tr -->
+                            <tr>
+                                <td valign="middle" style="background: #ffffff;">
+
+                                    <!------------------------------------
+                                        Email 驗證 （有驗證碼）
+                                    ------------------------------------->
+                                    <table id="vfc" role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto;">
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <div>
+                                                    <h2 style="color:#00b896;">{{.Subject}}</h2>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border-left: 16px solid #ffffff; border-right: 16px solid #ffffff;">
+                                                <div style="border-bottom: 24px solid #ffffff;">
+                                                    <p style="margin: 0; line-height: 1.5; color: #545454;">{{.Username}}，你好：</p>
+                                                    {{.Content}}
+                                                   
+                                                </div>
+                                              
+                                                        {{.Subcontent}}
+                                                
+                                                <!-- 灰底特殊區 -->
+
+                                                <div style="border-top: 1px solid #eeeeee;">
+                                                    <table width="100%" style="text-align: center; border-top: 24px solid #ffffff; border-bottom: 8px solid #ffffff;">
+                                                        <tr>
+                                                            <td>
+                                                                <a href="https://www.checkne.com/contact/customService" style="display: inline-block; margin: 0 auto; padding: 8px 16px; font-size: .875em; color: #444444; font-weight: bold; text-decoration: none; border-radius: 4px; border: 1px solid #444444; ">Check'Ne 會員中心</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="font-size: .8125em; color: #545454;">※ 此信件為系統發送，請勿直接回覆，謝謝！※</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <!-- 固定顯示區域 -->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+
+                                </td>
+                            </tr>
+                            <!-- end tr -->
+                            <tr>
+                                <td style="border-top: 1px solid #eeeeee;">
+                                    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#ffffff">
+                                        <tr>
+                                            <td valign="middle" style="border-top: 16px solid #ffffff; border-bottom: 16px solid #ffffff;">
+                                                <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td valign="middle" style="text-align:center; font-size: .875em; color: #999999;">Check'Ne © 2021</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- end tr -->
+                        </table>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>      
+                
+        </div>
+
+        <!--  jq示意用可以刪除 id也可刪 -->
+       
+    </body>
+

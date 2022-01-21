@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="55" viewBox="0 0 55 55">
+    <defs>
+        <path id="ngcriojaza" d="M27.5 13.01c-8.983 0-16.263 5.915-16.263 13.215 0 3.15 1.36 6.035 3.62 8.303-.793 3.202-3.449 6.054-3.48 6.086-.14.146-.179.362-.096.553.083.19.26.305.464.305 4.212 0 7.37-2.02 8.932-3.266 2.077.782 4.383 1.233 6.823 1.233 8.983 0 16.263-5.915 16.263-13.214 0-7.3-7.28-13.214-16.263-13.214z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <rect width="52" height="52" x="1.5" y="1.5" stroke="#00B896" stroke-width="3" rx="7"/>
+        <use fill="#00B896" xlink:href="#ngcriojaza"/>
+    </g>
+</svg>

@@ -1,0 +1,111 @@
+{{define "store/NewProduct.html" }}
+{{template "header" .}}
+<script type="text/javascript" src="/static/js/push.js"></script>
+<script type="text/javascript" src="/static/js/Sortable.js"></script>
+<script type="text/javascript" src="/static/js/storage.js"></script>
+
+<section class="addProdcuts">
+    <p class="qkCreateBillLink"><a href="javascript:void(0)" id="ProductList">複製商品列表</a></p>
+
+    <div class="addPro upLoadImg">
+        <div class="wrap" id="items"></div>
+    </div>
+
+    <div class="W100PerBorderS">
+        <div class="wrap">
+            <div class="formS01">
+                <p class="items"><input type="text" class="alignL" name="name" placeholder="請輸入商品名稱（限 40 字）" maxlength="40" value=""></p>
+                <p class="items"><span>金額</span><input type="text" name="price" placeholder="NT$" maxlength="6" oninput="value=value.replace(/[^\d]/g,'')"></p>
+                <p class="items qty"><span>可賣量</span><input type="text" name="qty" maxlength="2" placeholder="1~99" oninput="value=value.replace(/[^\d]/g,'')"></p>
+            </div>
+
+            <div class="formS02">
+                <a class="addSpec" href="javascript:void(0)">新增規格</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="sameShipping"><input type="checkbox" name="shipMerge" checked="">可合併運費<span class="iconInfo"></span></p>
+
+    <div class="deskZ">
+        <div class="W100PerBorderS shipping">
+            <h4 class="title_Folder">配送方式及運費<a href="javascript:void(0)" id="shipDesc">說明</a><span class="switch"></span></h4>
+            <div class="formChecknInput" id="ship">
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[0]" value="CvsFamily" checked />全家超商</span>
+                    <input type="text" class="shipFee" name="shipfee[0]" value="65" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[1]" value="CvsHiLife" checked />萊爾富超商</span>
+                    <input type="text" class="shipFee" name="shipfee[1]" value="65" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[2]" value="CvsOkMart" checked />OK超商</span>
+                    <input type="text" class="shipFee" name="shipfee[2]" value="65" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[3]" value="Cvs7Eleven" checked />7-11超商</span>
+                    <input type="text" class="shipFee" name="shipfee[3]" value="65" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[4]" value="Delivery" checked />宅配寄送</span>
+                    <input type="text" class="shipFee" name="shipfee[4]" value="" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[5]" value="iPOST" checked />i郵箱</span>
+                    <input type="text" class="shipFee" name="shipfee[5]" value="" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入金額" />
+                </p>
+                <p class="items">
+                    <span><input type="checkbox" class="shipType" name="shipping[6]" value="F2F" checked>面交/自取</span>
+                    <input type="text" class="shipFee" disabled>
+                </p>
+            </div>
+        </div>
+
+        <div class="W100PerBorderS payment">
+            <h4 class="title_Folder">付款方式<span class="switch"></span></h4>
+            <div class="formCheckn" id="payWay">
+                <p class="items">
+                    <input type="checkbox" class="type" name="payWay[0]" value="Credit" checked />信用卡
+                </p>
+                <p class="items">
+                    <input type="checkbox" class="type" name="payWay[1]" value="CVSPay" checked />超商貨到付款
+                </p>
+                <p class="items">
+                    <input type="checkbox" class="type" name="payWay[2]" value="Transfer" checked />ATM 轉帳
+                </p>
+                <p class="items">
+                    <input type="checkbox" class="type" name="payWay[3]" value="Balance" checked />Check'Ne 餘額
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="btnLtextRBtn">
+        <a class="close" href="javascript:void(0)">關閉</a>
+        <button class="genBtn prime" id="submit">上架商品</button>
+    </div>
+</section>
+
+
+<script>
+$(function(){
+    $("body").push();
+
+})
+
+let items = document.getElementById('items')
+new Sortable(items, {
+    disabled: false, // 關閉Sortable
+    animation: 150,
+    filter: ".ignore",  // 過濾器，不能拖曳的物件
+    // handle: ".upLoadImg",  // 可拖曳的區域
+    draggable: ".item",  // 可拖曳的物件
+    // ghostClass: 'blue-background-class'
+    forceFallback: false  // 忽略HTML5 DnD
+});
+
+</script>
+
+{{template "nofooter" }}
+{{end}}

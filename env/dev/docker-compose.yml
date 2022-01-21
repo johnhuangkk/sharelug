@@ -1,0 +1,129 @@
+version: '2'
+services:
+
+  go:
+    restart: always
+    build:
+      context: ../go
+    container_name: ${COMPOSE_PROJECT_NAME}_go
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.2
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+      - DEBUG=true
+    ports:
+      - ${GO_PORT}:8001
+    volumes:
+      - ${CODE_PATH}/:/go/src/sharelug
+      - ${AWS_CONFIGURE}:/root/.aws
+    tty: true
+    depends_on:
+      - redis
+      - nginx
+      - mysql
+
+  redis:
+    restart: always
+    build:
+      context: ../redis
+    container_name: ${COMPOSE_PROJECT_NAME}_redis
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.3
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+      - DEBUG=${REDIS_DEBUG}
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ${REDIS_CONF}:/usr/local/etc/redis/redis.conf
+      - ${DATA_PATH_HOST}/redis:/data
+    command: redis-server /usr/local/etc/redis/redis.conf
+    tty: true
+
+  mysql:
+    restart: always
+    build:
+      context: ../mysql
+      args:
+        - MYSQL_VERSION=${MYSQL_VERSION}
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.4
+    volumes:
+      - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+
+  nginx:
+    restart: always
+    build:
+      context: ../angularNginx
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.5
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+    volumes:
+      - ${DATA_PATH_HOST}/logs:/var/log/nginx
+      - ${NGINX_SSL_PATH}:/etc/nginx/ssl
+      - ${NGINX_SSL_ARCHIVE_PATH}:/etc/nginx/archive
+      - ${DATA_PATH_HOST}/sharelug-universal/:/var/www/
+      - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+      - ${NGINX_PASS_FILE}:/etc/nginx/pass
+      - ${NGINX_CONFIG}:/etc/nginx/nginx.conf
+    ports:
+      - ${NGINX_HOST_HTTP_PORT}:80
+      - ${NGINX_HOST_HTTPS_PORT}:443
+    tty: true
+
+  java:
+    restart: always
+    build:
+      context: ../java
+    container_name: ${COMPOSE_PROJECT_NAME}_java
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.6
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+    ports:
+      - 8000:8000
+    tty: true
+
+  erp:
+    restart: always
+    build:
+      context: ../erp
+    container_name: ${COMPOSE_PROJECT_NAME}_erp
+    networks:
+      ithelp_application:
+        ipv4_address: 172.27.0.7
+    environment:
+      - TZ=${WORKSPACE_TIMEZONE}
+    volumes:
+      - ${DATA_PATH_HOST}/dev-erp/:/var/www/
+    ports:
+      - 8002:3000
+    tty: true
+
+networks:
+  ithelp_application:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.27.0.0/16
+          gateway: 172.27.0.1
+
+
+

@@ -1,0 +1,66 @@
+{{define "index/login.html" }}
+{{template "header" .}}
+{{/*<link href="/static/css/signin.css" rel="stylesheet">*/}}
+<section class="main bgW top">
+    <div class="container">
+        <div class="row">
+
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputEmail" class="sr-only">You mobile number</label>
+            <input type="phone" id="phone" name="phone" class="form-control" placeholder="You mobile number" autofocus />
+            <input type="hidden" name="login" value="true" />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+
+        </div>
+
+
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $(".btn").bind("click", function(){
+            let data = {
+                Phone: $('input[name="phone"]').val(),
+
+            }
+            $.http.prerequest(function () {
+            }).put("/v1/cart/otp", JSON.stringify(data)).done(function (result) {
+                console.log(result);
+                if (result.Status === 'Fail') {
+                    alert(result.Message);
+                } else {
+                    let redirect = getUrlParameter('redirect');
+                    console.log(redirect !== undefined);
+                    if (redirect !== undefined) {
+                        location.href="/login/otp/"+$('input[name="phone"]').val() + '?redirect=' + redirect;
+                    } else {
+                        location.href="/login/otp/"+$('input[name="phone"]').val();
+                    }
+                }
+            }).fail(function (result) {
+                console.log(result);
+            });
+        });
+    });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+</script>
+
+{{template "footer" }}
+{{end}}

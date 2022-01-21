@@ -1,0 +1,25 @@
+{{define "index/carrier.html"}}
+    {{template "header" .}}
+    <section class="main bgW top">
+        <div class="container">
+            <h1>{{ .Message }}</h1>
+            <form id="myForm" action="{{ .Action }}" method="POST">
+                <input type="hidden" name="card_ban"  value="{{ .CardBan }}">
+                <input type="hidden" name="card_no1"  value="{{ .CardNo1 }}">
+                <input type="hidden" name="card_no2"  value="{{ .CardNo2 }}">
+                <input type="hidden" name="card_type" value="{{ .CardType }}">
+                <input type="hidden" name="token"     value="{{ .Token }}">
+                <input type="hidden" name="signature" value="{{ .Signature }}">
+                <input type="submit" value="送出表單">
+            </form>
+        </div>
+    </section>
+    <script>
+        {{ if .Redirect }}
+            location.replace("{{ .Url }}")
+        {{ else }}
+            $("#myForm").submit()
+        {{ end }}
+    </script>
+    {{template "footer" .}}
+{{end}}
