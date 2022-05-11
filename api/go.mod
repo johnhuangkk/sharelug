@@ -25,7 +25,7 @@ require (
 	github.com/sirupsen/logrus v1.2.0
 	github.com/smokezl/govalidators v1.0.1
 	github.com/spf13/viper v1.7.0
-	github.com/tidwall/gjson v1.6.1
+	github.com/tidwall/gjson v1.9.3
 	github.com/yeka/zip v0.0.0-20180914125537-d046722c6feb
 	github.com/yeqown/go-qrcode v1.5.3
 	go.uber.org/zap v1.15.0
